@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ace="http://www.icefaces.org/icefaces/components"
+      lang="ru">
+
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>Lab №3</title>
+    <h:outputStylesheet library="css" name="mainStyle.css"/>
+</h:head>
+
+<h:body>
+    <div id="hat">
+        <div id="itmo">ИТМО</div>
+        <div id="name">Зуев Никита Александрович</div>
+        <div id="group">Группа: P32111</div>
+        <div id="variant">Вариант: 119999</div>
+    </div>
+
+    <div id="interact">
+        <div id="form-div">
+            <h:form id="form">
+                <div id="x-input-div">
+                    <h:outputLabel value="X: "/>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel for="x-4" value="-4"/>
+                        <h:selectBooleanCheckbox id="x-4" class="X-input" value="#{hitBean.xMinus4}"/>
+                        <h:outputLabel for="x-3" value="-3"/>
+                        <h:selectBooleanCheckbox id="x-3" class="X-input" value="#{hitBean.xMinus3}"/>
+                        <h:outputLabel for="x-2" value="-2"/>
+                        <h:selectBooleanCheckbox id="x-2" class="X-input" value="#{hitBean.xMinus2}"/>
+                        <h:outputLabel for="x-1" value="-1"/>
+                        <h:selectBooleanCheckbox id="x-1" class="X-input" value="#{hitBean.xMinus1}"/>
+                        <h:outputLabel for="x0" value="0"/>
+                        <h:selectBooleanCheckbox id="x0" class="X-input" value="#{hitBean.x0}"/>
+                        <h:outputLabel for="x1" value="1"/>
+                        <h:selectBooleanCheckbox id="x1" class="X-input" value="#{hitBean.x1}"/>
+                        <h:outputLabel for="x2" value="2"/>
+                        <h:selectBooleanCheckbox id="x2" class="X-input" value="#{hitBean.x2}"/>
+                    </h:panelGrid>
+                </div>
+                <h:panelGrid columns="2">
+                    <h:outputLabel for="Y-input" value="Y:"/>
+                    <h:inputText id="Y-input" value="#{hitBean.y}" required="true"
+                                 requiredMessage="Пустое поле Y"
+                                 validatorMessage="Y должен быть от -5 до 3"
+                                 converterMessage="Y должен быть числом от -5 до 3"
+                                 maxlength="15"
+                                 styleClass="Y-input">
+                        <f:validateDoubleRange minimum="-5" maximum="3"/>
+                    </h:inputText>
+                </h:panelGrid>
+
+                <h:panelGrid columns="2">
+                    <h:outputLabel for="R-input" value="R:  "/>
+                    <ace:sliderEntry id="R-input"
+                                     clickableRail="true"
+                                     length="160px"
+                                     min="8"
+                                     max="20"
+                                     stepPercent="8.333333333"
+                                     value="#{hitBean.r}">
+                    </ace:sliderEntry>
+                </h:panelGrid>
+                <div>
+                    <h:commandButton class="submit" value="Добавить" actionListener="#{hitBean.addHit()}"/>
+                    <h:commandButton class="clear" value="Очистить таблицу" actionListener="#{hitBean.clear()}"/>
+                    <h:button value="К часам" outcome="go-index" id="go-to-clock-button"/>
+                </div>
+                <h:message for="Y-input" style="color:red"/>
+            </h:form>
+        </div>
+
+        <div id="picture">
+            <canvas id="canvas" width="400px" height="400px">
+                Aaah, canvas is not supported!
+            </canvas>
+        </div>
+    </div>
+
+    <div id="table_container">
+        <div id="table">
+            <h:dataTable value="#{hitBean.hits}"
+                         var="hit"
+                         headerClass="table_cell"
+                         rowClasses="#{hitBean.hitResultsCssClassesAsString}">
+                <h:column class="table_cell">
+                    <f:facet name="header">Результат</f:facet>
+                    <h:outputText value="#{hit.hitResultAsString}"/>
+                </h:column>
+                <h:column class="table_cell">
+                    <f:facet name="header">X</f:facet>
+                    <h:outputText value="#{hit.x}"/>
+                </h:column>
+                <h:column class="table_cell">
+                    <f:facet name="header">Y</f:facet>
+                    <h:outputText value="#{hit.y}"/>
+                </h:column>
+                <h:column class="table_cell">
+                    <f:facet name="header">R</f:facet>
+                    <h:outputText value="#{hit.r}"/>
+                </h:column>
+                <h:column class="table_cell">
+                    <f:facet name="header">Время</f:facet>
+                    <h:outputText value="#{hit.currentTimeAsString}"/>
+                </h:column>
+                <h:column class="table_cell">
+                    <f:facet name="header">Время исполнения</f:facet>
+                    <h:outputText value="#{hit.executionTimeAsString}" escape="false"/>
+                </h:column>
+
+            </h:dataTable>
+        </div>
+    </div>
+</h:body>
+<h:outputScript library="js" name="graph.js"/>
+<h:outputScript library="js" name="booleanCheckboxHandler.js"/>
+
+</html>

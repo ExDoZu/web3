@@ -1,0 +1,40 @@
+body {
+    background-color: rgb(191, 239, 240);
+}
+
+#hat > #name {
+    font-size: 20px;
+}
+
+#hat #itmo {
+    background: -webkit-linear-gradient(red, orange, yellow, green, blue, indigo, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 30px;
+}
+
+#hat {
+    text-align: center;
+    font-family: sans-serif;
+    color: darkslategray;
+    font-size: 16px;
+}
+
+
+#clock_and_button {
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+#go-to-main-button {
+    width: 220px;
+    height: 50px;
+    text-align: center;
+    font-family: monospace;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: #67ff9f;
+    border: 2px solid #333000;
+    border-radius: 10px;
+}

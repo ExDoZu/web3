@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+                                  http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>go-main</from-outcome>
+            <to-view-id>/main.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/main.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>go-index</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <managed-bean>
+        <managed-bean-name>hitBean</managed-bean-name>
+        <managed-bean-class>zuev.nikita.beans.HitHandlerBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>database</managed-bean-name>
+        <managed-bean-class>zuev.nikita.beans.database.Database</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>hit</managed-bean-name>
+        <managed-bean-class>zuev.nikita.beans.Hit</managed-bean-class>
+        <managed-bean-scope>none</managed-bean-scope>
+    </managed-bean>
+
+</faces-config>

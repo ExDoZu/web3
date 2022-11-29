@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      lang="ru">
+<h:head>
+    <meta charset="UTF-8"/>
+    <title>Lab №3</title>
+    <h:outputStylesheet library="css" name="indexStyle.css"/>
+</h:head>
+<h:body>
+    <div id="hat">
+        <div id="itmo">ИТМО</div>
+        <div id="name">Зуев Никита Александрович</div>
+        <div id="group">Группа: P32111</div>
+        <div id="variant">Вариант: 119999</div>
+    </div>
+    <div id="clock_and_button">
+        <div id="clock_div">
+            <canvas id="clock" width="390" height="390"></canvas>
+        </div>
+        <div id="bttn_to_main_div">
+            <h:button value="На главную!" outcome="go-main" id="go-to-main-button"/>
+        </div>
+    </div>
+
+
+</h:body>
+
+<h:outputScript library="js" name="clock.js"/>
+</html>
